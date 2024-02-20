@@ -1,6 +1,13 @@
+import torch
+
+# Set device to CPU explicitly
+device = torch.device("mps") if torch.backends.mps.is_available() else torch.device("cpu")
+
+
 from ragatouille import RAGPretrainedModel
 import re
 from llama_index import SimpleDirectoryReader
+
 
 _tags_re = re.compile(r'<[^>]+>')
 
@@ -17,11 +24,11 @@ def main():
     reader = SimpleDirectoryReader(input_dir="/Users/masterman/NLP/pmcoas/PMC001xxxxxx/")
 
     all_docs = reader.load_data()
+    all_docs=all_docs[:10]
 
     entry_texts = []
-    for docs in reader.iter_data():
-        for doc in docs:
-            entry_texts.append(doc.text)
+    for doc in all_docs:
+        entry_texts.append(doc.text)
 
     print("len of entry_texts is", len(entry_texts))
     entry_ids = [str(doc.doc_id) for doc in all_docs]

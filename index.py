@@ -24,7 +24,7 @@ def main():
     reader = SimpleDirectoryReader(input_dir="/Users/masterman/NLP/pmcoas/PMC001xxxxxx/")
 
     all_docs = reader.load_data()
-    all_docs=all_docs[:10]
+    all_docs=all_docs[:1000]
 
     entry_texts = []
     for doc in all_docs:
@@ -40,7 +40,7 @@ def main():
         collection=entry_texts,
         document_ids=entry_ids,
         document_metadatas=entry_metadatas,
-        index_name="blog",
+        index_name="pmc",
         max_document_length=180,
         split_documents=True
     )

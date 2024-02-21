@@ -1,13 +1,13 @@
 import torch
+import os
+from config.definitions import ROOT_DIR
 
 # Set device to CPU explicitly
 device = torch.device("mps") if torch.backends.mps.is_available() else torch.device("cpu")
 
-
 from ragatouille import RAGPretrainedModel
 import re
 from llama_index import SimpleDirectoryReader
-
 
 _tags_re = re.compile(r'<[^>]+>')
 
@@ -21,7 +21,8 @@ def main():
     rag = RAGPretrainedModel.from_pretrained("colbert-ir/colbertv2.0")
     # entries = list(db["blog_entry"].rows)
 
-    reader = SimpleDirectoryReader(input_dir="/Users/masterman/NLP/pmcoas/PMC001xxxxxx/")
+    docs_path = os.path.join(ROOT_DIR, 'data/raw_papers/')
+    reader = SimpleDirectoryReader(input_dir=docs_path)
 
     all_docs = reader.load_data()
     all_docs=all_docs[:1000]

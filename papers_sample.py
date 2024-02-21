@@ -16,7 +16,7 @@ def load_golden_papers(golden_papers_path):
     golden_papers = golden_papers.dropna().drop_duplicates()
     return golden_papers
 
-def sample_papers(papers_path,golden_papers_path, n_samples=10000):
+def sample_papers(papers_path,golden_papers_path, n_samples=1000):
     papers = load_papers(papers_path)
     golden_papers = load_golden_papers(golden_papers_path)
     sample_golden_papers = papers.merge(golden_papers, on='pmcid')

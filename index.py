@@ -25,7 +25,6 @@ def main(input_docs_dir):
     reader = SimpleDirectoryReader(input_dir=docs_path)
 
     all_docs = reader.load_data()
-    all_docs=all_docs[:1000]
 
     entry_texts = []
     for doc in all_docs:
@@ -41,11 +40,11 @@ def main(input_docs_dir):
         collection=entry_texts,
         document_ids=entry_ids,
         document_metadatas=entry_metadatas,
-        index_name="pmc",
+        index_name="muscle_sample",
         max_document_length=180,
         split_documents=True
     )
 
 
 if __name__ == "__main__":
-    main()
+    main('data/muscle_papers_sample/')

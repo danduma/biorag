@@ -16,12 +16,12 @@ def strip_html_tags(text):
     return _tags_re.sub('', text)
 
 
-def main():
+def main(input_docs_dir):
     # db = sqlite_utils.Database("simonwillisonblog.db")
     rag = RAGPretrainedModel.from_pretrained("colbert-ir/colbertv2.0")
     # entries = list(db["blog_entry"].rows)
 
-    docs_path = os.path.join(ROOT_DIR, 'data/raw_papers/')
+    docs_path = os.path.join(ROOT_DIR, input_docs_dir)
     reader = SimpleDirectoryReader(input_dir=docs_path)
 
     all_docs = reader.load_data()

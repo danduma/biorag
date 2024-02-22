@@ -33,14 +33,14 @@ def main(input_docs_dir):
     print("len of entry_texts is", len(entry_texts))
     entry_ids = [str(doc.doc_id) for doc in all_docs]
     entry_metadatas = [
-        {"slug": doc.doc_id} for doc in all_docs
+        {"slug": doc.doc_id, "file_name": doc.metadata['file_name']} for doc in all_docs
     ]
 
     rag.index(
         collection=entry_texts,
         document_ids=entry_ids,
         document_metadatas=entry_metadatas,
-        index_name="muscle_sample",
+        index_name="muscle_sample_pmc",
         max_document_length=180,
         split_documents=True
     )

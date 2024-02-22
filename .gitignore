@@ -162,3 +162,4 @@ cython_debug/
 .ragatouille/
 data/
 .vscode/
+.DS_Store

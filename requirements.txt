@@ -1,1 +1,3 @@
 ragatouille
+qdrant-client
+google-cloud-aiplatform

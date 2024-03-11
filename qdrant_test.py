@@ -2,7 +2,7 @@ from qdrant_client import QdrantClient
 from qdrant_client.http.models import Distance, VectorParams
 from qdrant_client.http.models import PointStruct
 
-client = QdrantClient("34.66.162.59", port=6333)
+client = QdrantClient("35.186.244.186", port=80)
 client.create_collection(
     collection_name="test_collection",
     vectors_config=VectorParams(size=4, distance=Distance.DOT),

@@ -17,6 +17,9 @@ spec:
         image: qdrant/qdrant
         ports:
         - containerPort: 6333
+        env:
+        - name: QDRANT__SERVICE__API_KEY
+          value: "ppdpassverysecuremanywow"
         volumeMounts:
         - mountPath: "/data"
           name: qdrant-storage
